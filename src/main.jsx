@@ -10,6 +10,8 @@ import SingleProduct from "./pages/SingleProduct.jsx";
 import Homepage from "./pages/Homepage.jsx";
 import { defer } from "react-router-dom";
 
+const ApiURL = import.meta.env.VITE_API_URL;
+
 const router = createBrowserRouter([
   {
     element: <App />,
@@ -22,9 +24,7 @@ const router = createBrowserRouter([
         path: "products",
         element: <Products />,
         loader: () => {
-          const products = fetch("https://ioayoub.fr/api/eshop").then((res) =>
-            res.json()
-          );
+          const products = fetch(ApiURL).then((res) => res.json());
 
           return defer({
             products,
@@ -34,8 +34,7 @@ const router = createBrowserRouter([
       {
         path: "products/:id",
         element: <SingleProduct />,
-        loader: ({ params }) =>
-          fetch(`https://ioayoub.fr/api/eshop/${params.id}`),
+        loader: ({ params }) => fetch(`${ApiURL}/${params.id}`),
       },
       {
         path: "*",
