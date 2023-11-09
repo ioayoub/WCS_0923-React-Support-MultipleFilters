@@ -10,6 +10,7 @@ import SingleProduct from "./pages/SingleProduct.jsx";
 import Homepage from "./pages/Homepage.jsx";
 import { defer } from "react-router-dom";
 
+// eslint-disable-next-line react-refresh/only-export-components
 const ApiURL = import.meta.env.VITE_API_URL;
 
 const router = createBrowserRouter([
